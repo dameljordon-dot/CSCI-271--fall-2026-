@@ -1,0 +1,87 @@
+#include <iostream> // Allows us to use cin and cout
+using namespace std; // Lets us write cout and cin without std::
+
+int main() { // Main function where the program starts
+    const int SIZE = 5; // Sets the number of scores to 5
+    int scores[SIZE]; // Creates an array to hold 5 scores
+
+    // This loop asks the user to enter 5 test scores
+    for (int i = 0; i < SIZE; i++) { // Repeats 5 times
+        cout << "Enter score " << i + 1 << ": "; // Asks for a score
+        cin >> scores[i]; // Stores the score in the array
+    } // Ends the first for loop
+
+    int sum = 0; // Starts the total at 0
+    int highest = scores[0]; // Sets highest to the first score
+    int lowest = scores[0]; // Sets lowest to the first score
+
+    // This loop calculates the sum, highest, and lowest
+    for (int i = 0; i < SIZE; i++) { // Goes through all 5 scores
+        sum += scores[i]; // Adds each score to the total
+
+        if (scores[i] > highest) { // Checks for a higher score
+            highest = scores[i]; // Updates the highest score
+        } // Ends the highest score check
+
+        if (scores[i] < lowest) { // Checks for a lower score
+            lowest = scores[i]; // Updates the lowest score
+        } // Ends the lowest score check
+    } // Ends the second for loop
+
+    // Converts sum to double to keep decimal values
+    double average = static_cast<double>(sum) / SIZE; // Finds average
+
+    cout << "Scores: "; // Prints the Scores label
+
+    // This loop displays all 5 scores
+    for (int i = 0; i < SIZE; i++) { // Goes through each score
+        cout << scores[i] << " "; // Prints each score with a space
+    } // Ends the third for loop
+
+    cout << endl; // Moves to the next line
+
+    cout << "Sum: " << sum << endl; // Displays the total
+    cout << "Average: " << average << endl; // Displays the average
+    cout << "Highest: " << highest << endl; // Displays highest score
+    cout << "Lowest: " << lowest << endl; // Displays lowest score
+
+    return 0; // Ends the program successfully
+}
+
+#include <iostream> // Allows us to use cin and cout
+using namespace std; // Lets us use cin and cout without std::
+
+int main() { // Main function where the program starts
+    const int SIZE = 10; // Sets the array size to 10
+
+    int data[10] = {7, 12, 5, 12, 40, 3, 12, 8, 21, 5}; // Stores 10 numbers in the array
+
+    int target; // Stores the number the user wants to find
+    int foundIndex = -1; // -1 means the number has not been found
+    int count = 0; // Counts how many times the number appears
+
+    cout << "Enter a number to search for: "; // Asks the user for a number
+    cin >> target; // Saves the number entered by the user
+
+    for (int i = 0; i < SIZE; i++) { // Checks all 10 array positions
+        if (data[i] == target) { // Checks if the current number matches the target
+            count++; // Adds 1 to the counter for each match
+
+            if (foundIndex == -1) { // Checks if this is the first match
+                foundIndex = i; // Saves the index of the first match
+            } // Ends the first match check
+        } // Ends the target comparison
+    } // Ends the for loop
+
+    if (foundIndex != -1) { // Checks if the target was found
+        cout << target << " first found at index "
+             << foundIndex << endl; // Prints the first matching index
+
+        cout << target << " appears " << count
+             << " time(s)" << endl; // Prints the total number of matches
+    } else { // Runs if the target was never found
+        cout << target << " was not found." << endl; // Prints not found message
+    } // Ends the if-else statement
+
+    return 0; // Ends the program successfully
+}
