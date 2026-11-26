@@ -1,0 +1,60 @@
+// Damel K. Jordon | Assignment 9
+// Question 35: Sum of a File
+// Place numbers.txt in the program's working directory.
+
+#include <iostream> // Allows console output and error messages.
+#include <fstream>  // Allows reading from a file.
+using namespace std;
+
+int main() {
+    ifstream inFile("numbers.txt"); // Open the file for reading.
+
+    if (!inFile.is_open()) { // Stop if the file could not be opened.
+        cerr << "Error: Could not open numbers.txt." << endl;
+        return 1;
+    }
+
+    int number; // Stores each whole number read from the file.
+    long long sum = 0; // Stores the running total.
+
+    while (inFile >> number) { // Read and add each number.
+        sum += number;
+    }
+
+    inFile.close(); // Close the input file.
+
+    cout << "Sum: " << sum << endl; // Display the total.
+    return 0;
+} 
+
+// Damel K. Jordon | Assignment 9
+// Question 36: Swap Ends
+// Use pointers to swap the first and last elements of an array.
+
+#include <iostream>
+using namespace std;
+
+void swapValues(int* a, int* b) {
+    int temp = *a; // Save the value stored at the first address.
+    *a = *b; // Copy the second value into the first variable.
+    *b = temp; // Copy the saved value into the second variable.
+}
+
+int main() {
+    const int SIZE = 5;
+    int scores[SIZE] = {85, 90, 78, 92, 88};
+
+    // Pass the addresses of the first and last array elements.
+    swapValues(&scores[0], &scores[SIZE - 1]);
+
+    for (int i = 0; i < SIZE; i++) {
+        cout << scores[i]; // Print the current array element.
+
+        if (i < SIZE - 1) {
+            cout << " "; // Put a space between the numbers.
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
