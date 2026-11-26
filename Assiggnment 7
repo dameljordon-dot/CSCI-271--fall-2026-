@@ -1,0 +1,98 @@
+// Damel K. Jordon | Assignment 7
+// Problem 1: Find a target in a sorted array using binary search.
+
+#include <iostream>  // Provides console input and output.
+using namespace std;  // Allows cin and cout without std::.
+
+int main() {  // Start the program.
+    const int SIZE = 8;  // Set the number of array elements.
+    int arr[SIZE] = {11, 22, 33, 44, 55, 66, 77, 88};  // Store sorted numbers.
+    int target;  // Store the number to search for.
+
+    cout << "Enter a number to search for: ";  // Ask for a target.
+    if (!(cin >> target)) {  // Check that the input is an integer.
+        cerr << "Please enter a whole number.\n";  // Display an error.
+        return 1;  // Stop if the input is invalid.
+    }  // End input validation.
+
+    int low = 0;  // Start with the first index.
+    int high = SIZE - 1;  // Start with the last index.
+    int foundIndex = -1;  // Indicate that no match has been found.
+
+    while (low <= high) {  // Continue while the search range has elements.
+        int mid = (low + high) / 2;  // Calculate the middle index.
+
+        if (arr[mid] == target) {  // Check for a match.
+            foundIndex = mid;  // Save the matching index.
+            break;  // Stop searching.
+        } else if (arr[mid] < target) {  // Check whether the target is larger.
+            low = mid + 1;  // Search the right half.
+        } else {  // The target is smaller than the middle value.
+            high = mid - 1;  // Search the left half.
+        }  // End the comparison.
+    }  // End the search loop.
+
+    if (foundIndex == -1) {  // Check whether the target was absent.
+        cout << target << " not found\n";  // Display the unsuccessful result.
+    } else {  // The target was found.
+        cout << target << " found at index " << foundIndex << '\n';  // Display its index.
+    }  // End the result check.
+
+    return 0;  // End the program successfully.
+}  // End main. 
+
+// Damel K. Jordon | Assignment 7
+// Problem 3: Store grades and calculate their count, average, and highest value.
+
+#include <iostream>  // Provides console input and output.
+#include <vector>  // Provides the vector container.
+using namespace std;  // Allows standard names without std::.
+
+int main() {  // Start the program.
+    vector<int> grades;  // Declare an empty vector of integers.
+    int count;  // Store the number of grades to enter.
+
+    cout << "How many grades? ";  // Ask for the number of grades.
+    if (!(cin >> count) || count < 0) {  // Check for a valid nonnegative integer.
+        cerr << "Please enter a nonnegative whole number.\n";  // Display an error.
+        return 1;  // Stop if the count is invalid.
+    }  // End count validation.
+
+    int highest = 0;  // The first entered grade will set the starting maximum.
+
+    for (int i = 0; i < count; i++) {  // Repeat once for each requested grade.
+        int grade;  // Store the current grade.4
+        cout << "Enter grade " << i + 1 << ": ";  // Display the grade number.
+
+        if (!(cin >> grade)) {  // Check that the grade is an integer.
+            cerr << "Please enter a whole-number grade.\n";  // Display an error.
+            return 1;  // Stop if the grade is invalid.
+        }  // End grade validation.
+
+        grades.push_back(grade);  // Add the grade to the end of the vector.
+
+        if (i == 0 || grade > highest) {  // Check for the first grade or a new maximum.
+            highest = grade;  // Update the highest grade.
+        }  // End the maximum check.
+    }  // End grade entry.
+
+    long long total = 0;  // Create a running total with room for large sums.
+    cout << "Grades:";  // Begin the line displaying all grades.
+
+    for (int g : grades) {  // Visit every grade using a range-based loop.
+        cout << ' ' << g;  // Print the current grade on the same line.
+        total += g;  // Add the grade to the total.
+    }  // End the range-based loop.
+
+    cout << "\nCount: " << grades.size() << '\n';  // Print the vector's size.
+
+    if (grades.empty()) {  // Handle a vector containing zero grades.
+        cout << "Average: N/A\nHighest: N/A\n";  // Avoid dividing by zero.
+    } else {  // Calculate statistics when grades are available.
+        double average = static_cast<double>(total) / count;  // Calculate a decimal average.
+        cout << "Average: " << average << '\n';  // Display the average.
+        cout << "Highest: " << highest << '\n';  // Display the highest grade.
+    }  // End the statistics check.
+
+    return 0;  // End the program successfully.
+}  // End main.
