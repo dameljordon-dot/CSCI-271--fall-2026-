@@ -1,0 +1,52 @@
+// Name: Damel Jordon
+// Assignment 4
+// File: mult_table.cpp
+// This program prints a multiplication table from 1 through 10.
+
+#include <iostream>  // Allows us to use cout and cin
+using namespace std; // Allows us to write cout and cin without std::
+
+int main()
+{
+    int number; // Declare an integer variable to store the user's number
+
+    cout << "Enter a number: "; // Ask the user to enter a whole number
+    cin >> number; // Store the user's input in the variable number
+
+    for (int i = 1; i <= 10; i++) // Loop from 1 through 10
+    {
+        cout << number << " x " << i << " = " // Multiply the user's number by i and display the result
+             << number * i << endl;
+    }
+
+    return 0; // End the program successfully
+} 
+
+// Name: Damel Jordon
+// Assignment 4
+// File: menu_validate.cpp
+// This program asks for a menu choice until the user enters 1, 2, or 3.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int choice; // Declare an integer variable to store the user's choice
+
+    do // A do-while loop runs at least one time
+    {
+        cout << "Enter a menu choice (1, 2, or 3): "; // Ask the user to enter a menu choice
+        cin >> choice; // Store the user's input
+
+        if (choice != 1 && choice != 2 && choice != 3) // Check if the choice is NOT 1, 2, or 3
+        {
+            cout << "Invalid choice, try again." << endl; // Display an error message for an invalid choice
+        }
+
+    } while (choice != 1 && choice != 2 && choice != 3); // Repeat the loop while the choice is invalid
+
+    cout << "You selected option " << choice << "." << endl; // Display the valid option selected by the user
+
+    return 0; // End the program successfully
+}
