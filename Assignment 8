@@ -1,0 +1,18 @@
+Program: vowel_counter.cpp
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string sentence;
+    string vowels = "aeiouAEIOU";
+    int count = 0;
+    cout << "Enter a sentence: ";
+    getline(cin, sentence);  // Read the entire sentence.
+    for (char letter: sentence) {
+        if (vowels.find(letter) != string::npos) {
+            count++;  // Add one for each vowel.
+        }
+    }
+    cout << "Vowels: " << count << endl;
+    return 0;
+
